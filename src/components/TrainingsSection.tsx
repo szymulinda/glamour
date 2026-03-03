@@ -44,7 +44,7 @@ const TrainingsSection = () => {
         </div>
 
         <a
-          href="#"
+          href="https://www.facebook.com/glamourkosmetikopole"
           className="inline-flex items-center justify-center px-10 py-4 border-2 border-primary text-primary font-body text-sm font-semibold tracking-widest uppercase rounded hover:bg-primary hover:text-primary-foreground transition-colors"
         >
           Poznaj ofertę szkoleń

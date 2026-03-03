@@ -1,36 +1,42 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
+import logo from "@/assets/logo.png";
 
 const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
 
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background z "podrasowaniem" */}
       <div className="absolute inset-0">
         <motion.img 
           src={heroBg} 
           alt="Glamour Kosmetik salon" 
           className="w-full h-full object-cover contrast-110 brightness-90"
-          // Powolny, luksusowy zoom tła - maskuje słabą jakość przez ruch
           initial={{ scale: 1 }}
           animate={{ scale: 1.1 }}
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
         />
-        {/* Bardziej zaawansowany overlay (gradient) */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl">
-        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light text-primary-foreground mb-6 animate-fade-up leading-tight">
-          Odkryj swoje <br /> naturalne piękno.
-        </h1>
-        <p className="font-body text-base md:text-lg text-primary-foreground/80 font-light max-w-xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-          Glamour Kosmetik to miejsce, w&nbsp;którym nowoczesna kosmetologia spotyka się z&nbsp;relaksem. Zarezerwuj swój czas dla siebie.
-        </p>
+      <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl flex flex-col items-center">
         
-        {/* Przycisk z efektem powiększenia (Hover Scale) */}
+        <div className="flex flex-col items-center mb-10 animate-fade-up">
+          {/* Logo dodane bezpośrednio nad kreseczką */}
+          <img 
+            src={logo} 
+            alt="Glamour Kosmetik Logo" 
+            className="h-[110px] md:h-[220px] w-auto mb-4 drop-shadow-2xl" 
+          />
+          
+          <div className="w-12 h-px bg-primary/60 my-8" />
+          
+          <p className="font-body text-[10px] md:text-xs text-primary-foreground/100 font-light max-w-2xl mx-auto tracking-[0.3em] uppercase leading-loose">
+            Miejsce, w&nbsp;którym pasja spotyka się z&nbsp;relaksem. <br />
+            Zarezerwuj swój czas dla siebie.
+          </p>
+        </div>
+        
         <div className="flex justify-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
           <a
             href={BOOKSY_URL}

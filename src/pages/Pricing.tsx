@@ -18,41 +18,148 @@ interface ServiceGroup {
 
 const serviceGroups: ServiceGroup[] = [
   {
-    id: "twarz",
-    label: "Twarz",
+    id: "mezoterapia-mikroiglowa",
+    label: "Mezoterapia mikroigłowa",
     services: [
-      { name: "Konsultacja", price: "Bezpłatna" },
-      { name: "Wodorowe oczyszczanie twarzy", price: "od 200 PLN" },
-      { name: "Mezoterapia mikroigłowa", price: "od 350 PLN" },
-      { name: "RF - Radiofrekwencja Mikroigłowa termolifting", price: "od 400 PLN" },
-      { name: "Eksfoliacja kwasami", price: "od 150 PLN" },
+      { name: "Mezoterapia mikroigłowa z kwasami BioRePeel3cl", price: "420 zł" },
+      { name: "Mezoterapia mikroigłowa egzosomy", price: "500 zł" },
+      { name: "Mezoterapia mikroigłowa skóry głowy", price: "400 zł+" },
+      { name: "Glow Time Vit C", price: "399 zł" },
+      { name: "Mezoterapia mikroigłowa Dermapen", price: "500 zł" },
     ],
   },
   {
-    id: "cialo",
-    label: "Ciało",
+    id: "kosmetologia-estetyczna",
+    label: "Kosmetologia estetyczna",
     services: [
-      { name: "Endomasaż - Magnifico II Premium", price: "od 180 PLN" },
-      { name: "Liposukcja kawitacyjna - Magnifico II Premium", price: "od 200 PLN" },
+      { name: "Tropolift", price: "400 zł+" },
+      { name: "Lifting twarzy - stymulator tkankowy", price: "950 zł" },
+      { name: "Mezoterapia igłowa twarzy - stymulator", price: "400 zł+" },
+      { name: "Mezoterapia igłowa skóry głowy", price: "400 zł+" },
+      { name: "Mezoterapia igłowa tropokolagenem", price: "400 zł+" },
+      { name: "Tropokolagen redukcja podbródka, chomików", price: "399 zł" },
+      { name: "Koktajl Monte Carlo - twarz", price: "520 zł" },
     ],
   },
   {
-    id: "laser",
-    label: "Laser",
+    id: "oczyszczanie-wodorowe",
+    label: "Oczyszczanie wodorowe",
     services: [
-      { name: "Epilacja laserowa", price: "od 100 PLN" },
-      { name: "Laserowy Peeling Węglowy", price: "od 250 PLN" },
-      { name: "Laserowe odmładzanie Resurfacing", price: "od 350 PLN" },
-      { name: "Laserowe usuwanie przebarwień", price: "od 200 PLN" },
+      { name: "Wodorowe oczyszczanie standard", price: "240 zł" },
+      { name: "Wodorowe oczyszczanie z kwasami", price: "280 zł" },
+      { name: "Wodorowe oczyszczanie premium", price: "350 zł" },
+      { name: "Wodorowe oczyszczanie skóry głowy", price: "260 zł" },
+      { name: "Wodorowe oczyszczanie twarzy z Dermapen", price: "600 zł" },
+      { name: "Wodorowe oczyszczanie Hydrodetox Hair", price: "280 zł" },
     ],
   },
   {
-    id: "beauty",
-    label: "Beauty",
+    id: "ekstoliacja-kwasami",
+    label: "Ekstoliacja kwasami",
     services: [
-      { name: "Stylizacja paznokci", price: "od 80 PLN" },
-      { name: "Pedicure", price: "od 100 PLN" },
-      { name: "Stylizacja brwi i rzęs", price: "od 60 PLN" },
+      { name: "Peeling chemiczny całoroczny", price: "320 zł" },
+      { name: "Terapia kwasami", price: "220 zł+" },
+      { name: "Azac Peel dla skóry z problemami", price: "250 zł" },
+      { name: "Arkana kwasy", price: "250 zł" },
+      { name: "Nano-needles", price: "320 zł" },
+    ],
+  },
+  {
+    id: "manicure",
+    label: "Manicure",
+    services: [
+      { name: "Manicure hybrydowy", price: "140 zł" },
+      { name: "Manicure żelowy", price: "160 zł" },
+      { name: "Manicure japoński", price: "90 zł" },
+      { name: "Ściągnięcie stylizacji", price: "90 zł" },
+      { name: "Manicure biologiczny", price: "80 zł" },
+      { name: "Manicure ByeBye", price: "90 zł" },
+      { name: "Manicure klasyczny", price: "90 zł" },
+    ],
+  },
+  {
+    id: "pedicure",
+    label: "Pedicure",
+    services: [
+      { name: "Pedicure hybrydowy", price: "160 zł" },
+      { name: "Pedicure biologiczny", price: "110 zł" },
+      { name: "Pedicure klasyczny z lakierem", price: "120 zł" },
+      { name: "Pedicure tylko hybryda", price: "130 zł" },
+      { name: "Pedicure męski", price: "130 zł" },
+      { name: "Pedicure kwasowy", price: "180 zł" },
+      { name: "Pedicure kwasowy z hybrydą", price: "230 zł" },
+    ],
+  },
+  {
+    id: "laserowy-peeling-weglowy",
+    label: "Laserowy peeling węglowy",
+    services: [
+      { name: "Laserowy peeling węglowy - Twarz", price: "260 zł" },
+      { name: "Laserowy peeling węglowy - Twarz Szyja", price: "300 zł" },
+      { name: "Laserowy peeling węglowy - Twarz Szyja Dekolt", price: "350 zł" },
+      { name: "Laserowy peeling węglowy - Dłonie", price: "200 zł" },
+      { name: "Laserowy peeling węglowy - Plecy", price: "350 zł" },
+    ],
+  },
+  {
+    id: "laserowe-odmladzanie-resurfacing",
+    label: "Laserowe odmładzanie resurfacing",
+    services: [
+      { name: "Laserowe odmładzanie - resurfacing twarz", price: "400 zł" },
+      { name: "Laserowe odmładzanie - resurfacing twarz, szyja", price: "450 zł" },
+      { name: "Laserowe odmładzanie - resurfacing twarz, szyja, dekolt", price: "550 zł" },
+      { name: "Laserowe odmładzanie - resurfacing twarz, szyja + Black Doll", price: "700 zł" },
+    ],
+  },
+  {
+    id: "laserowe-usuwanie-przebarwien",
+    label: "Laserowe usuwanie przebarwień",
+    services: [
+      { name: "Laserowe usuwanie przebarwień - pojedyncza zmiana", price: "170 zł" },
+      { name: "Laserowe usuwanie przebarwień - czoło", price: "200 zł" },
+      { name: "Laserowe usuwanie przebarwień - dekolt", price: "300 zł" },
+      { name: "Laserowe usuwanie przebarwień - dłonie", price: "300 zł" },
+      { name: "Laserowe usuwanie przebarwień - policzki", price: "250 zł" },
+      { name: "Laserowe usuwanie przebarwień - twarz", price: "400 zł" },
+      { name: "Laserowe usuwanie przebarwień - broda", price: "200 zł" },
+    ],
+  },
+  {
+    id: "laserowe-usuwanie-tatuazu",
+    label: "Laserowe usuwanie tatuażu",
+    services: [
+      { name: "Tatuaż do 5x5 cm", price: "120 zł" },
+      { name: "Tatuaż do 10x10 cm", price: "160 zł" },
+      { name: "Tatuaż do A3", price: "280 zł" },
+      { name: "Tatuaż do A4", price: "380 zł" },
+      { name: "Makijaż permanentny", price: "200 zł" },
+    ],
+  },
+  {
+    id: "epilacja-laserowa-7-zabiegow",
+    label: "Epilacja laserowa - 7 zabiegów",
+    services: [
+      { name: "Pachy", price: "1320 zł" },
+      { name: "Uda", price: "1380 zł" },
+      { name: "Wąsik", price: "600 zł" },
+      { name: "Plecy", price: "1500 zł" },
+      { name: "Klatka piersiowa", price: "1680 zł" },
+      { name: "Łydki", price: "1380 zł" },
+      { name: "Bikini klasyczne", price: "1200 zł" },
+      { name: "Bikini głębokie", price: "1380 zł" },
+      { name: "Całe nogi", price: "2520 zł" },
+      { name: "Sutki", price: "720 zł" },
+      { name: "Ramiona", price: "1320 zł" },
+      { name: "Przedramiona", price: "1320 zł" },
+      { name: "Linia brzucha", price: "720 zł" },
+      { name: "Kark", price: "1380 zł" },
+      { name: "Kolana", price: "720 zł" },
+      { name: "Brzuch", price: "1200 zł" },
+      { name: "Całe ręce", price: "2400 zł" },
+      { name: "Broda", price: "1200 zł" },
+      { name: "Broda i wąsik", price: "1680 zł" },
+      { name: "Cała twarz", price: "2400 zł" },
+      { name: "Odcinek lędźwiowy", price: "1200 zł" },
     ],
   },
 ];
@@ -86,7 +193,7 @@ const Pricing = () => {
               >
                 <div className="flex items-center gap-4 mb-8">
                   <span className="w-8 h-px bg-primary" />
-                  <h2 className="font-heading text-3xl md:text-4xl font-light text-foreground">
+                  <h2 className="font-heading text-2xl md:text-3xl font-light text-foreground tracking-wide">
                     {group.label}
                   </h2>
                   <span className="flex-1 h-px bg-border" />
@@ -100,7 +207,7 @@ const Pricing = () => {
                         i < group.services.length - 1 ? "border-b border-border" : ""
                       }`}
                     >
-                      <span className="font-body text-sm md:text-base text-foreground">
+                      <span className="font-body text-sm md:text-base text-foreground tracking-tight">
                         {s.name}
                       </span>
                       <div className="flex items-center gap-4 md:gap-8 shrink-0 ml-4">
