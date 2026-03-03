@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
 
@@ -18,8 +17,11 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
-        <Link to="/" className="flex items-center">
-          <img src={logo} alt="Glamour Kosmetik" className="h-12 md:h-14 w-auto" />
+        {/* Glamour Kosmetik - Wersja: powiększona, normalna waga, mniejszy odstęp */}
+        <Link to="/" className="flex items-center ml-2 md:ml-8">
+          <span className="text-primary text-xl md:text-3xl font-heading tracking-[0.05em]  font-normal">
+            Glamour Kosmetik
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

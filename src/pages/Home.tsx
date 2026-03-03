@@ -4,17 +4,48 @@ import AboutSection from "@/components/AboutSection";
 import TrainingsSection from "@/components/TrainingsSection";
 import FeaturedTreatments from "@/components/FeaturedTreatments";
 import Footer from "@/components/Footer";
+import AnimatedPage from "@/components/Animated";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <TrainingsSection />
-      <FeaturedTreatments />
-      <Footer />
-    </div>
+    <AnimatedPage>
+      <div className="min-h-screen bg-background">
+        <Header />
+        
+        {/* HeroSection animuje się razem z wejściem całej strony */}
+        <HeroSection />
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <AboutSection />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <FeaturedTreatments />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <TrainingsSection />
+        </motion.div>
+
+        <Footer />
+      </div>
+    </AnimatedPage>
   );
 };
 

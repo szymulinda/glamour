@@ -16,9 +16,14 @@ const Footer = () => {
       <div className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto mb-16 text-center">
-            <img src={logo} alt="Glamour Kosmetik" className="h-20 md:h-24 w-auto mx-auto mb-4 brightness-0 invert" />
+            {/* Zwiększone logo: z h-24 na h-28/h-32 */}
+            <img 
+              src={logo} 
+              alt="Glamour Kosmetik" 
+              className="h-28 md:h-32 w-auto mx-auto mb-4 brightness-0 invert" 
+            />
             <p className="font-body text-sm text-primary-foreground/60 max-w-md mx-auto leading-relaxed">
-              Twoje miejsce piękna i&nbsp;relaksu w&nbsp;samym sercu miasta.
+              Witaj w świecie piękna Glamour Kosmetik, gdzie piękno spotyka się z relaksem.
             </p>
           </div>
 
@@ -58,11 +63,11 @@ const Footer = () => {
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-sm font-body text-primary-foreground/70">
                   <MapPin className="w-4 h-4 text-primary shrink-0" />
-                  ul. Przykładowa 12, 00-001 Warszawa
+                  ul. Partyzancka 37, 45-801 Opole  
                 </li>
                 <li className="flex items-center gap-3 text-sm font-body text-primary-foreground/70">
                   <Phone className="w-4 h-4 text-primary shrink-0" />
-                  +48 123 456 789
+                  +48 794 042 087
                 </li>
                 <li className="flex items-center gap-3 text-sm font-body text-primary-foreground/70">
                   <Mail className="w-4 h-4 text-primary shrink-0" />
@@ -76,10 +81,10 @@ const Footer = () => {
                 Social Media
               </h4>
               <div className="flex gap-4">
-                <a href="#" aria-label="Instagram" className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:border-primary hover:text-primary transition-colors">
+                <a href="https://www.instagram.com/glamourkosmetikopole?utm_source=qr" aria-label="Instagram" className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:border-primary hover:text-primary transition-colors">
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:border-primary hover:text-primary transition-colors">
+                <a href="https://www.facebook.com/glamourkosmetikopole/?ref=NONE_xav_ig_profile_page_web#" aria-label="Facebook" className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:border-primary hover:text-primary transition-colors">
                   <Facebook className="w-4 h-4" />
                 </a>
               </div>

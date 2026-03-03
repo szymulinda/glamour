@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Treatments from "./pages/Treatments";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
+import { Scroll } from "lucide-react";  
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/zabiegi" element={<Treatments />} />
