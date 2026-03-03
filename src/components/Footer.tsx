@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import footerBg from "@/assets/footer-bg.jpg";
+import logo from "@/assets/logo.png";
 
 const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
 
@@ -15,9 +16,7 @@ const Footer = () => {
       <div className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto mb-16 text-center">
-            <h3 className="font-heading text-4xl md:text-5xl text-primary-foreground mb-4">
-              Glamour <span className="text-primary">Kosmetik</span>
-            </h3>
+            <img src={logo} alt="Glamour Kosmetik" className="h-20 md:h-24 w-auto mx-auto mb-4 brightness-0 invert" />
             <p className="font-body text-sm text-primary-foreground/60 max-w-md mx-auto leading-relaxed">
               Twoje miejsce piękna i&nbsp;relaksu w&nbsp;samym sercu miasta.
             </p>
