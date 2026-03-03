@@ -1,9 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Sparkles, Activity, Zap, Heart } from "lucide-react";
-import treatmentFace from "@/assets/treatment-face.jpg";
-import treatmentBody from "@/assets/treatment-body.jpg";
-import treatmentLaser from "@/assets/treatment-laser.jpg";
+import treatmentFace from "@/assets/treatment-face.jpeg";
+import treatmentBody from "@/assets/treatment-body.jpeg";
+import treatmentLaser from "@/assets/treatment-laser.jpeg";
 import treatmentBeauty from "@/assets/treatment-beauty.jpg";
 
 const treatments = [
@@ -59,7 +59,7 @@ const treatments = [
   },
 ];
 
-const BOOKSY_URL = "https://booksy.com";
+const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
 
 const Treatments = () => {
   return (
