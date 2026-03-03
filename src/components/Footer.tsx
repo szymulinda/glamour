@@ -17,10 +17,10 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto mb-16 text-center">
             {/* Zwiększone logo: z h-24 na h-28/h-32 */}
-            <img 
+<img 
               src={logo} 
               alt="Glamour Kosmetik" 
-              className="h-28 md:h-32 w-auto mx-auto mb-4 brightness-0 invert" 
+              className="h-28 md:h-32 w-auto mx-auto mb-4 invert(87%) sepia(21%) saturate(2283%) hue-rotate(1deg) brightness(97%) contrast(92%)" 
             />
             <p className="font-body text-sm text-primary-foreground/60 max-w-md mx-auto leading-relaxed">
               Witaj w świecie piękna Glamour Kosmetik, gdzie piękno spotyka się z relaksem.

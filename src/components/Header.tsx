@@ -16,33 +16,35 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
-        {/* Glamour Kosmetik - Wersja: powiększona, normalna waga, mniejszy odstęp */}
-        <Link to="/" className="flex items-center ml-2 md:ml-8">
-          <span className="text-primary text-xl md:text-3xl font-heading tracking-[0.05em]  font-normal">
+      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4 transition-all duration-300">
+        
+        {/* Logotyp Glamour Kosmetik - Nowa, luksusowa struktura */}
+        <Link to="/" className="flex flex-col items-start leading-none group py-2">
+          <span className="text-primary text-2xl md:text-4xl font-heading font-light transition-all duration-300 group-hover:brightness-125">
             Glamour Kosmetik
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`font-body text-sm tracking-widest uppercase transition-colors ${
+              className={`font-body text-sm tracking-widest uppercase transition-colors relative group ${
                 location.pathname === link.path
                   ? "text-primary"
                   : "text-muted-foreground hover:text-primary"
               }`}
             >
               {link.label}
+              <span className={`absolute -bottom-1 left-0 w-full h-px bg-primary scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === link.path ? "scale-x-100" : ""}`} />
             </Link>
           ))}
           <a
             href={BOOKSY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm font-medium tracking-wide rounded hover:bg-gold-dark transition-colors"
+            className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-body text-sm font-medium tracking-widest uppercase rounded-sm hover:bg-gold-dark transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary/10"
           >
             Umów wizytę
           </a>
@@ -54,8 +56,8 @@ const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-background border-b border-border px-4 pb-6 animate-fade-in">
-          <nav className="flex flex-col gap-4 pt-2">
+        <div className="md:hidden bg-background border-b border-border px-4 pb-8 animate-fade-in">
+          <nav className="flex flex-col gap-6 pt-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -63,7 +65,7 @@ const Header = () => {
                 onClick={() => setMobileOpen(false)}
                 className={`font-body text-sm tracking-widest uppercase text-left ${
                   location.pathname === link.path
-                    ? "text-primary"
+                    ? "text-primary font-medium"
                     : "text-muted-foreground"
                 }`}
               >
@@ -74,7 +76,7 @@ const Header = () => {
               href={BOOKSY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm font-medium tracking-wide rounded"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-body text-sm font-medium tracking-widest uppercase rounded-sm"
             >
               Umów wizytę
             </a>
