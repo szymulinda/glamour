@@ -1,10 +1,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Sparkles, Activity, Zap, Heart } from "lucide-react";
-import treatmentFace from "@/assets/treatment-face.jpg";
-import treatmentBody from "@/assets/treatment-body.jpg";
-import treatmentLaser from "@/assets/treatment-laser.jpg";
-import treatmentBeauty from "@/assets/treatment-beauty.jpg";
+import treatmentFace from "@/assets/kosmeto.webp";
+import treatmentBody from "@/assets/treatment-body.webp";
+import treatmentLaser from "@/assets/laser.webp";
+import treatmentBeauty from "@/assets/beauty.webp";
 import AnimatedPage from "@/components/Animated";
 import { motion } from "framer-motion";
 

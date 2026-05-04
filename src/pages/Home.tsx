@@ -5,6 +5,7 @@ import TrainingsSection from "@/components/TrainingsSection";
 import FeaturedTreatments from "@/components/FeaturedTreatments";
 import Footer from "@/components/Footer";
 import AnimatedPage from "@/components/Animated";
+import Opinie from "@/components/Opinie";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
           transition={{ duration: 0.8 }}
         >
           <AboutSection />
+          <Opinie />
         </motion.div>
 
         <motion.div
