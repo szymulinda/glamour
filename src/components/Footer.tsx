@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
-import footerBg from "@/assets/footer-bg.jpg";
+import footerBg from "@/assets/image.webp";
 import logo from "@/assets/logo.png";
 
 const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
