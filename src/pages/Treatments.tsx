@@ -2,8 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Sparkles, Stethoscope, Activity, Zap, Heart } from "lucide-react";
 import treatmentFace from "@/assets/kosmeto.webp";
-import treatmentAestheticMedicine from "@/assets/treatment-aesthetic-medicine.png";
-import treatmentBody from "@/assets/treatment-body.png";
+import treatmentAestheticMedicine from "@/assets/treatment-aesthetic-medicine.webp";
+import treatmentBody from "@/assets/treatment-body.webp";
 import treatmentLaser from "@/assets/laser.webp";
 import treatmentBeauty from "@/assets/beauty.webp";
 import AnimatedPage from "@/components/Animated";
@@ -60,6 +60,8 @@ const treatments: Treatment[] = [
       "Nowoczesne technologie wspierające redukcję tkanki tłuszczowej i ujędrnianie ciała. Nasze zabiegi pomogą Ci osiągnąć wymarzoną sylwetkę bez inwazyjnych procedur.",
     icon: Activity,
     image: treatmentBody,
+    imageAlt:
+      "Gabinet zabiegowy z urządzeniami Magnifico II Premium i M'onduniq Infinite",
     services: [
       "Endomasaż Magnifico II Premium",
       "Liposukcja kawitacyjna",

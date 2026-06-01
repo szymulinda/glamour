@@ -1,4 +1,4 @@
-import aboutSalon from "@/assets/about-salon.jpg";
+import aboutSalon from "@/assets/about-salon.webp";
 
 const AboutSection = () => {
   return (
@@ -8,7 +8,7 @@ const AboutSection = () => {
           <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-2xl">
             <img
               src={aboutSalon}
-              alt="Wnętrze salonu Glamour Kosmetik"
+              alt="Barbara Maślak — właścicielka salonu Glamour Kosmetik"
               className="w-full h-[500px] md:h-[650px] object-cover"
             />
           </div>
