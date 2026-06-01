@@ -20,7 +20,7 @@ const Footer = () => {
 <img 
               src={logo} 
               alt="Glamour Kosmetik" 
-              className="h-28 md:h-32 w-auto mx-auto mb-4 invert(87%) sepia(21%) saturate(2283%) hue-rotate(1deg) brightness(97%) contrast(92%)" 
+              className="h-28 md:h-32 w-auto mx-auto mb-4" 
             />
             <p className="font-body text-sm text-primary-foreground/60 max-w-md mx-auto leading-relaxed">
               Witaj w świecie piękna Glamour Kosmetik, gdzie piękno spotyka się z relaksem.

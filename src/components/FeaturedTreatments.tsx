@@ -5,14 +5,17 @@ const treatments = [
   {
     title: "Kosmetologia Estetyczna",
     icon: Sparkles,
+    slug: "kosmetologia-estetyczna",
   },
   {
     title: "Modelowanie Sylwetki",
     icon: Activity,
+    slug: "modelowanie-sylwetki",
   },
   {
     title: "Laseroterapia",
     icon: Zap,
+    slug: "laseroterapia",
   },
 ];
 
@@ -42,7 +45,7 @@ const FeaturedTreatments = () => {
                 {t.title}
               </h3>
               <Link
-                to="/zabiegi"
+                to={`/zabiegi#${t.slug}`}
                 className="font-body text-sm text-primary tracking-wide hover:underline underline-offset-4 transition-colors"
               >
                 Dowiedz się więcej →

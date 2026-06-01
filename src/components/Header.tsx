@@ -15,12 +15,10 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4 transition-all duration-300">
-        
-        {/* Logotyp Glamour Kosmetik - Nowa, luksusowa struktura */}
-        <Link to="/" className="flex flex-col items-start leading-none group py-2">
-          <span className="text-primary text-2xl md:text-4xl font-heading font-light transition-all duration-300 group-hover:brightness-125">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 border-b border-border supports-[backdrop-filter]:bg-background/90 supports-[backdrop-filter]:backdrop-blur-md overflow-visible">
+      <div className="container mx-auto flex items-center justify-between min-h-16 md:min-h-20 px-4 py-2 md:py-3 gap-4">
+        <Link to="/" className="flex flex-col items-start leading-none group py-2 shrink-0 min-w-0">
+          <span className="text-gilded text-2xl md:text-4xl font-heading font-light transition-all duration-300 group-hover:brightness-125">
             Glamour Kosmetik
           </span>
         </Link>

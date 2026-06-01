@@ -1,16 +1,31 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Sparkles, Activity, Zap, Heart } from "lucide-react";
+import { Sparkles, Stethoscope, Activity, Zap, Heart } from "lucide-react";
 import treatmentFace from "@/assets/kosmeto.webp";
-import treatmentBody from "@/assets/treatment-body.webp";
+import treatmentAestheticMedicine from "@/assets/treatment-aesthetic-medicine.png";
+import treatmentBody from "@/assets/treatment-body.png";
 import treatmentLaser from "@/assets/laser.webp";
 import treatmentBeauty from "@/assets/beauty.webp";
 import AnimatedPage from "@/components/Animated";
 import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 
-const treatments = [
+type Treatment = {
+  title: string;
+  slug: string;
+  description: string;
+  icon: LucideIcon;
+  image: string;
+  services: string[];
+  subtitle?: string;
+  imageAlt?: string;
+  imageClassName?: string;
+};
+
+const treatments: Treatment[] = [
   {
     title: "Kosmetologia Estetyczna & Twarzy",
+    slug: "kosmetologia-estetyczna",
     description:
       "Zaawansowane zabiegi odmładzające i regenerujące, które przywracają skórze twarzy naturalny blask. Wykorzystujemy najnowsze technologie, aby Twoja cera wyglądała promiennie i młodo.",
     icon: Sparkles,
@@ -23,7 +38,24 @@ const treatments = [
     ],
   },
   {
+    title: "Medycyna Estetyczna",
+    slug: "medycyna-estetyczna",
+    subtitle: "Lek. med. Jarosław Głowacki",
+    description:
+      "Lekarskie zabiegi estetyczne prowadzone przez specjalistę ginekologii i położnictwa z ponad 12-letnim doświadczeniem. Indywidualne konsultacje i certyfikowane preparaty — dla naturalnego, harmonijnego efektu bez przerysowania. Przyjęcia: środy.",
+    icon: Stethoscope,
+    image: treatmentAestheticMedicine,
+    imageAlt: "Lek. med. Jarosław Głowacki — medycyna estetyczna",
+    imageClassName: "object-top",
+    services: [
+      "Konsultacja medycyny estetycznej",
+      "Botoks",
+      "Bruksizm",
+    ],
+  },
+  {
     title: "Modelowanie Sylwetki",
+    slug: "modelowanie-sylwetki",
     description:
       "Nowoczesne technologie wspierające redukcję tkanki tłuszczowej i ujędrnianie ciała. Nasze zabiegi pomogą Ci osiągnąć wymarzoną sylwetkę bez inwazyjnych procedur.",
     icon: Activity,
@@ -35,6 +67,7 @@ const treatments = [
   },
   {
     title: "Laseroterapia",
+    slug: "laseroterapia",
     description:
       "Precyzyjne zabiegi laserowe wykonywane na najwyższej klasy sprzęcie. Epilacja, peeling węglowy, usuwanie przebarwień — bezpiecznie i skutecznie.",
     icon: Zap,
@@ -48,6 +81,7 @@ const treatments = [
   },
   {
     title: "Strefa Beauty",
+    slug: "strefa-beauty",
     subtitle: "Paznokcie, Brwi, Rzęsy",
     description:
       "Profesjonalna stylizacja paznokci, pedicure leczniczy oraz laminacja brwi i przedłużanie rzęs. Zadbaj o każdy detal swojego wyglądu.",
@@ -84,20 +118,21 @@ const Treatments = () => {
           <div className="container mx-auto px-4 max-w-6xl space-y-20 md:space-y-28">
             {treatments.map((t, index) => (
               <motion.div
+                id={t.slug}
                 key={t.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
-                className={`flex flex-col ${
+                className={`scroll-mt-24 md:scroll-mt-28 flex flex-col ${
                   index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                 } gap-8 lg:gap-14 items-center`}
               >
                 <div className="w-full lg:w-1/2 overflow-hidden rounded-lg">
                   <img
                     src={t.image}
-                    alt={t.title}
-                    className="w-full h-[450px] md:h-[600px] object-cover transition-transform duration-500 hover:scale-105"
+                    alt={t.imageAlt ?? t.title}
+                    className={`w-full h-[450px] md:h-[600px] object-cover transition-transform duration-500 hover:scale-105 ${t.imageClassName ?? ""}`}
                   />
                 </div>
 
