@@ -1,0 +1,19 @@
+import { SITE_ORIGIN } from "@/lib/site-data";
+
+export const generateRobotsTxt = () => `User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: ${SITE_ORIGIN}/sitemap.xml
+`;

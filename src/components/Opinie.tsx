@@ -1,4 +1,5 @@
 import { Star, ExternalLink } from "lucide-react";
+import { BOOKSY_URL, BUSINESS_NAME, CITY } from "@/lib/site-data";
 
 interface Review {
   name: string;
@@ -35,67 +36,78 @@ const reviews: Review[] = [
 ];
 
 const StarRating = () => (
-  <div className="flex gap-0.5 mb-4">
+  <div className="flex gap-0.5 mb-4" role="img" aria-label="Ocena pięć na pięć gwiazdek">
     {[...Array(5)].map((_, i) => (
       <Star
         key={i}
         className="w-4 h-4 fill-primary text-primary"
+        aria-hidden="true"
       />
     ))}
   </div>
 );
 
 const ReviewCard = ({ review }: { review: Review }) => (
-  <div className="flex flex-col bg-background border border-border/40 rounded-lg p-7 h-full">
+  <article className="flex flex-col bg-background border border-border/40 rounded-lg p-7 h-full">
     <StarRating />
     <blockquote className="font-body text-sm text-foreground/80 leading-relaxed italic flex-1 mb-6">
       &ldquo;{review.text}&rdquo;
     </blockquote>
-    <div className="border-t border-border/30 pt-5">
+    <footer className="border-t border-border/30 pt-5">
       <p className="font-heading text-base font-medium text-foreground">
         {review.name}
       </p>
       <p className="font-body text-xs text-primary mt-0.5 tracking-wide">
         {review.service}
       </p>
-      <p className="font-body text-xs text-muted-foreground mt-1">
+      <time
+        dateTime={review.date}
+        className="font-body text-xs text-muted-foreground mt-1 block"
+      >
         {review.date}
-      </p>
-    </div>
-  </div>
+      </time>
+    </footer>
+  </article>
 );
 
 const ReviewsSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section
+      className="py-24 md:py-32 bg-background"
+      aria-labelledby="reviews-heading"
+    >
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-14">
+        <header className="text-center mb-14">
           <p className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-3">
             Opinie klientek
           </p>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4 leading-tight">
+          <h2
+            id="reviews-heading"
+            className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4 leading-tight"
+          >
             Co mówią o nas nasze klientki
           </h2>
           <p className="font-body text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             Zweryfikowane opinie z&nbsp;platformy Booksy
           </p>
-        </div>
+        </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
-          {reviews.map((review, i) => (
-            <ReviewCard key={i} review={review} />
+          {reviews.map((review) => (
+            <ReviewCard key={`${review.name}-${review.date}`} review={review} />
           ))}
         </div>
 
         <div className="text-center">
           <a
-            href="https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo"
+            href={BOOKSY_URL}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Więcej opinii o ${BUSINESS_NAME} ${CITY} na Booksy`}
             className="inline-flex items-center justify-center gap-2 px-10 py-4 border-2 border-primary text-primary font-body text-sm font-semibold tracking-widest uppercase rounded hover:bg-primary hover:text-primary-foreground transition-colors"
           >
             Więcej opinii na Booksy
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
           </a>
         </div>
       </div>

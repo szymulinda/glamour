@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import AppLayout from "@/components/AppLayout";
+import OptimizedImage from "@/components/OptimizedImage";
 import { Sparkles, Stethoscope, Activity, Zap, Heart } from "lucide-react";
 import treatmentFace from "@/assets/kosmeto.webp";
 import treatmentAestheticMedicine from "@/assets/treatment-aesthetic-medicine.webp";
@@ -9,6 +9,22 @@ import treatmentBeauty from "@/assets/beauty.webp";
 import AnimatedPage from "@/components/Animated";
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
+import {
+  JsonLd,
+  buildOfferCatalogItems,
+  buildPersonSchema,
+  buildPhysicianSchema,
+  buildTreatmentProcedureSchema,
+  usePageSeo,
+} from "@/lib/seo";
+import {
+  BUSINESS_NAME,
+  CITY,
+  OFFER_CATALOG_SECTIONS,
+  SITE_ORIGIN,
+  TREATMENTS_PAGE_SEO,
+  buildPageUrl,
+} from "@/lib/site-data";
 
 type Treatment = {
   title: string;
@@ -20,6 +36,7 @@ type Treatment = {
   subtitle?: string;
   imageAlt?: string;
   imageClassName?: string;
+  medical?: boolean;
 };
 
 const treatments: Treatment[] = [
@@ -30,6 +47,8 @@ const treatments: Treatment[] = [
       "Zaawansowane zabiegi odmładzające i regenerujące, które przywracają skórze twarzy naturalny blask. Wykorzystujemy najnowsze technologie, aby Twoja cera wyglądała promiennie i młodo.",
     icon: Sparkles,
     image: treatmentFace,
+    imageAlt:
+      "Kosmetologia estetyczna twarzy — wodorowe oczyszczanie, mezoterapia mikroigłowa i RF, Glamour Kosmetik Opole",
     services: [
       "Wodorowe oczyszczanie twarzy",
       "Mezoterapia mikroigłowa",
@@ -45,8 +64,10 @@ const treatments: Treatment[] = [
       "Lekarskie zabiegi estetyczne prowadzone przez specjalistę ginekologii i położnictwa z ponad 12-letnim doświadczeniem. Indywidualne konsultacje i certyfikowane preparaty — dla naturalnego, harmonijnego efektu bez przerysowania. Przyjęcia: środy.",
     icon: Stethoscope,
     image: treatmentAestheticMedicine,
-    imageAlt: "Lek. med. Jarosław Głowacki — medycyna estetyczna",
+    imageAlt:
+      "Lek. med. Jarosław Głowacki — medycyna estetyczna, botoks i leczenie bruksizmu, Opole",
     imageClassName: "object-top",
+    medical: true,
     services: [
       "Konsultacja medycyny estetycznej",
       "Botoks",
@@ -61,7 +82,7 @@ const treatments: Treatment[] = [
     icon: Activity,
     image: treatmentBody,
     imageAlt:
-      "Gabinet zabiegowy z urządzeniami Magnifico II Premium i M'onduniq Infinite",
+      "Modelowanie sylwetki bez skalpela — endomasaż Magnifico II Premium i liposukcja kawitacyjna, Opole",
     services: [
       "Endomasaż Magnifico II Premium",
       "Liposukcja kawitacyjna",
@@ -74,6 +95,8 @@ const treatments: Treatment[] = [
       "Precyzyjne zabiegi laserowe wykonywane na najwyższej klasy sprzęcie. Epilacja, peeling węglowy, usuwanie przebarwień — bezpiecznie i skutecznie.",
     icon: Zap,
     image: treatmentLaser,
+    imageAlt:
+      "Laseroterapia — epilacja laserowa, peeling węglowy i usuwanie przebarwień, Glamour Kosmetik Opole",
     services: [
       "Epilacja laserowa",
       "Laserowy Peeling Węglowy",
@@ -89,6 +112,8 @@ const treatments: Treatment[] = [
       "Profesjonalna stylizacja paznokci, pedicure leczniczy oraz laminacja brwi i przedłużanie rzęs. Zadbaj o każdy detal swojego wyglądu.",
     icon: Heart,
     image: treatmentBeauty,
+    imageAlt:
+      "Strefa beauty — stylizacja paznokci, pedicure leczniczy, laminacja brwi i rzęs, Opole",
     services: [
       "Stylizacja paznokci",
       "Pedicure",
@@ -97,29 +122,65 @@ const treatments: Treatment[] = [
   },
 ];
 
-const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
+const BOOKSY_URL =
+  "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
 
 const Treatments = () => {
+  usePageSeo(TREATMENTS_PAGE_SEO);
+  const pageUrl = buildPageUrl(TREATMENTS_PAGE_SEO.path);
+
+  const pageStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["HealthAndBeautyBusiness", "BeautySalon"],
+        "@id": `${SITE_ORIGIN}/#business`,
+        name: BUSINESS_NAME,
+        url: buildPageUrl("/"),
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `Katalog zabiegów ${BUSINESS_NAME}`,
+          itemListElement: buildOfferCatalogItems(OFFER_CATALOG_SECTIONS),
+        },
+      },
+      {
+        "@type": "WebPage",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: TREATMENTS_PAGE_SEO.title,
+        description: TREATMENTS_PAGE_SEO.description,
+        inLanguage: "pl-PL",
+        about: { "@id": `${SITE_ORIGIN}/#business` },
+      },
+      buildPersonSchema(),
+      buildPhysicianSchema(pageUrl),
+      ...OFFER_CATALOG_SECTIONS.map((section) =>
+        buildTreatmentProcedureSchema(section, pageUrl),
+      ),
+    ],
+  };
+
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-background">
-        <Header />
-
-        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-secondary">
+      <AppLayout>
+        <header className="pt-32 pb-16 md:pt-40 md:pb-20 bg-secondary">
           <div className="container mx-auto px-4 text-center">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-3">
               Nasze zabiegi
             </p>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-light text-foreground">
-              Zabiegi
+              Kosmetologia premium — zabiegi w {CITY}
             </h1>
           </div>
-        </section>
+        </header>
 
-        <section className="py-16 md:py-24 bg-background">
+        <section
+          className="py-16 md:py-24 bg-background"
+          aria-label="Katalog zabiegów Glamour Kosmetik Opole"
+        >
           <div className="container mx-auto px-4 max-w-6xl space-y-20 md:space-y-28">
             {treatments.map((t, index) => (
-              <motion.div
+              <motion.article
                 id={t.slug}
                 key={t.title}
                 initial={{ opacity: 0, y: 40 }}
@@ -130,17 +191,21 @@ const Treatments = () => {
                   index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                 } gap-8 lg:gap-14 items-center`}
               >
-                <div className="w-full lg:w-1/2 overflow-hidden rounded-lg">
-                  <img
+                <figure className="w-full lg:w-1/2 overflow-hidden rounded-lg">
+                  <OptimizedImage
                     src={t.image}
                     alt={t.imageAlt ?? t.title}
+                    priority={index === 0}
                     className={`w-full h-[450px] md:h-[600px] object-cover transition-transform duration-500 hover:scale-105 ${t.imageClassName ?? ""}`}
                   />
-                </div>
+                </figure>
 
-                <div className="w-full lg:w-1/2">
+                <section className="w-full lg:w-1/2">
                   <div className="flex items-center gap-3 mb-4">
-                    <t.icon className="w-6 h-6 text-primary" />
+                    <t.icon
+                      className="w-6 h-6 text-primary"
+                      aria-hidden="true"
+                    />
                     <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground">
                       {t.title}
                     </h2>
@@ -159,7 +224,10 @@ const Treatments = () => {
                         key={s}
                         className="font-body text-sm text-foreground flex items-center gap-2"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                        <span
+                          className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"
+                          aria-hidden="true"
+                        />
                         {s}
                       </li>
                     ))}
@@ -168,18 +236,19 @@ const Treatments = () => {
                     href={BOOKSY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Umów wizytę na ${t.title} w ${BUSINESS_NAME} ${CITY} — rezerwacja Booksy`}
                     className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-body text-sm font-semibold tracking-widest uppercase rounded hover:bg-gold-dark transition-colors"
                   >
                     Umów wizytę
                   </a>
-                </div>
-              </motion.div>
+                </section>
+              </motion.article>
             ))}
           </div>
         </section>
 
-        <Footer />
-      </div>
+      </AppLayout>
+      <JsonLd data={pageStructuredData} />
     </AnimatedPage>
   );
 };

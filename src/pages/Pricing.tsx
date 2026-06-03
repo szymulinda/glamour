@@ -1,9 +1,20 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import AppLayout from "@/components/AppLayout";
 import AnimatedPage from "@/components/Animated";
 import { motion } from "framer-motion";
+import {
+  JsonLd,
+  buildOfferCatalogItems,
+  usePageSeo,
+} from "@/lib/seo";
+import {
+  BUSINESS_NAME,
+  CITY,
+  PRICING_PAGE_SEO,
+  buildPageUrl,
+} from "@/lib/site-data";
 
-const BOOKSY_URL = "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
+const BOOKSY_URL =
+  "https://booksy.com/pl-pl/232184_glamour-kosmetik_salon-kosmetyczny_12930_opole#ba_s=seo";
 
 interface ServiceItem {
   name: string;
@@ -164,44 +175,108 @@ const serviceGroups: ServiceGroup[] = [
   },
 ];
 
+const pricingCatalogSections = serviceGroups.map((group) => ({
+  name: group.label,
+  slug: group.id,
+  description: `Cennik zabiegów: ${group.label} w ${BUSINESS_NAME} ${CITY}.`,
+  services: group.services.map((service) => service.name),
+}));
+
 const Pricing = () => {
+  usePageSeo(PRICING_PAGE_SEO);
+  const pageUrl = buildPageUrl(PRICING_PAGE_SEO.path);
+
+  const pricingStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: PRICING_PAGE_SEO.title,
+        description: PRICING_PAGE_SEO.description,
+        inLanguage: "pl-PL",
+      },
+      {
+        "@type": "HealthAndBeautyBusiness",
+        name: BUSINESS_NAME,
+        url: buildPageUrl("/"),
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `Cennik ${BUSINESS_NAME}`,
+          itemListElement: buildOfferCatalogItems(pricingCatalogSections).map(
+            (offer, index) => {
+              const flatIndex = serviceGroups.reduce<{ group: ServiceGroup; service: ServiceItem }[]>(
+                (acc, group) => {
+                  group.services.forEach((service) => {
+                    acc.push({ group, service });
+                  });
+                  return acc;
+                },
+                [],
+              )[index];
+              if (!flatIndex) return offer;
+              return {
+                ...offer,
+                price: flatIndex.service.price,
+                priceCurrency: "PLN",
+              };
+            },
+          ),
+        },
+      },
+    ],
+  };
+
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-background">
-        <Header />
-
-        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-secondary">
+      <AppLayout>
+        <header className="pt-32 pb-16 md:pt-40 md:pb-20 bg-secondary">
           <div className="container mx-auto px-4 text-center">
             <p className="font-body text-xs tracking-[0.3em] uppercase text-primary mb-3">
               Cennik & Usługi
             </p>
             <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-light text-foreground">
-              Cennik
+              Cennik zabiegów w {CITY}
             </h1>
           </div>
-        </section>
+        </header>
 
-        <section className="py-16 md:py-24 bg-background">
+        <section
+          className="py-16 md:py-24 bg-background"
+          aria-label="Cennik usług Glamour Kosmetik"
+        >
           <div className="container mx-auto px-4 max-w-4xl space-y-16">
             {serviceGroups.map((group, groupIndex) => (
-              <motion.div 
+              <motion.section
                 key={group.id}
+                id={group.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
+                aria-labelledby={`pricing-${group.id}`}
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <span className="w-8 h-px bg-primary" />
-                  <h2 className="font-heading text-2xl md:text-3xl font-light text-foreground tracking-wide">
+                  <span
+                    className="w-8 h-px bg-primary"
+                    aria-hidden="true"
+                  />
+                  <h2
+                    id={`pricing-${group.id}`}
+                    className="font-heading text-2xl md:text-3xl font-light text-foreground tracking-wide"
+                  >
                     {group.label}
                   </h2>
-                  <span className="flex-1 h-px bg-border" />
+                  <span
+                    className="flex-1 h-px bg-border"
+                    aria-hidden="true"
+                  />
                 </div>
 
-                <div className="space-y-0">
+                <ul className="space-y-0">
                   {group.services.map((s, i) => (
-                    <div
+                    <li
                       key={s.name}
                       className={`flex items-center justify-between py-5 ${
                         i < group.services.length - 1 ? "border-b border-border" : ""
@@ -218,21 +293,22 @@ const Pricing = () => {
                           href={BOOKSY_URL}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`Rezerwuj ${s.name} w ${BUSINESS_NAME} ${CITY}`}
                           className="font-body text-xs tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors"
                         >
                           Rezerwuj
                         </a>
                       </div>
-                    </div>
+                    </li>
                   ))}
-                </div>
-              </motion.div>
+                </ul>
+              </motion.section>
             ))}
           </div>
         </section>
 
-        <Footer />
-      </div>
+      </AppLayout>
+      <JsonLd data={pricingStructuredData} />
     </AnimatedPage>
   );
 };
