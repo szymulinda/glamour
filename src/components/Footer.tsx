@@ -120,8 +120,18 @@ const Footer = () => {
           </div>
 
           <div className="border-t border-primary-foreground/10 mt-16 pt-8 text-center">
-            <p className="font-body text-xs text-primary-foreground/40 tracking-wider">
-              © {new Date().getFullYear()} Glamour Kosmetik. Wszelkie prawa zastrzeżone.
+            <p className="font-body text-xs text-primary-foreground/70 tracking-wider flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+              <span>© {new Date().getFullYear()} Glamour Kosmetik. Wszelkie prawa zastrzeżone.</span>
+              <span aria-hidden="true" className="hidden sm:inline">-</span>
+              <span className="inline-flex items-center">
+                Strona wykonana przez&nbsp;
+                <a
+                  href="https://szymonjurkun.pl"
+                  className="inline-flex items-center min-h-[44px] py-3 text-primary-foreground/70 hover:text-primary hover:underline focus:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-foreground rounded-sm transition-colors"
+                >
+                  Szymon Jurkun
+                </a>
+              </span>
             </p>
           </div>
         </div>
